@@ -67,9 +67,9 @@ public class JavaConfig {
     Properties hibernateProperties() {
         Properties properties = new Properties();
 
-        properties.put("db.properties", "hibernate.show_sql");
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
+        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 
         return properties;
     }
